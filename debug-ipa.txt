@@ -1,0 +1,3 @@
+# Verify that Tomcat can authenticate against DS using the subsystem cert
+
+cat /etc/pki/pki-tomcat/alias/pwdfile.txt | LDAPTLS_CACERTDIR=/etc/pki/pki-tomcat/alias/ LDAPTLS_CERT='subsystemCert cert-pki-ca' ldapsearch -H ldaps://`hostname`:636 -b "" -s base -Y EXTERNAL
